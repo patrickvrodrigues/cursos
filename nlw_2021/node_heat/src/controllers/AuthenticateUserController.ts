@@ -6,7 +6,7 @@ class AuthenticateUserController {
   async handle(request: Request, response: Response) {
 
     const { code } = request.body;
-
+    console.log("passou")
     const service = new AuthenticateUserService();
 
     try {

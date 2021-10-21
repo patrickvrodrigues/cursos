@@ -1,4 +1,4 @@
-import { prisma } from '.prisma/client';
+import { PrismaClient } from '.prisma/client';
 import axios from "axios";
 import prismaClient from "../prisma"
 import { sign } from "jsonwebtoken"
@@ -37,10 +37,6 @@ class AuthenticateUserService {
     });
 
     const { login, id, avatar_url, name } = response.data;
-    console.log(login);
-    console.log(id);
-    console.log(avatar_url);
-    console.log(name);
 
     let user = await prismaClient.user.findFirst({
       where: {
