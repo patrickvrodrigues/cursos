@@ -13,6 +13,7 @@ interface Task {
 export function TaskList() {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [newTaskTitle, setNewTaskTitle] = useState('');
+  const [newPlaceHolder, setNewPlaceHolder] = useState('Adicionar novo todo');
 
   function handleCreateNewTask() {
     if (newTaskTitle.length > 0) {
@@ -23,6 +24,10 @@ export function TaskList() {
       });
       setTasks(tasks);
       setNewTaskTitle('')
+      setNewPlaceHolder('Adicione a proxima tarefa')
+      setTimeout(() => {
+        setNewPlaceHolder('Adicionar novo todo')
+      }, 3000);
     }
   }
 
@@ -53,7 +58,7 @@ export function TaskList() {
         <div className="input-group">
           <input
             type="text"
-            placeholder="Adicionar novo todo"
+            placeholder={newPlaceHolder}
             onChange={(e) => setNewTaskTitle(e.target.value)}
             value={newTaskTitle}
           />
